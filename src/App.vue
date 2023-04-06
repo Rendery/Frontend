@@ -1,6 +1,6 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import WelcomeItem from './components/WelcomeItem.vue'
 import Headerproject from './components/Headerproject.vue'
 import Footproject from './components/Footproject.vue';
 
@@ -10,9 +10,22 @@ import Footproject from './components/Footproject.vue';
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
+      <div class="welcome-item"> <!-- agrega la clase "welcome-item" -->
+          <WelcomeItem>
+              <template v-slot:icon>
+                  <i class="fas fa-rocket"></i>
+              </template>
+
+              <template v-slot:heading>
+                  Welcome to My Site
+              </template>
+
+              <p>Thank you for visiting my site. Please take a look around and let me know if you have any questions.</p>
+          </WelcomeItem>
+      </div>
+      <div>
+          <ImageFrame imageUrl="https://media.tenor.com/Vi3igSsjtdMAAAAi/hu-tao-music.gif" />
+      </div>
   </header>
 
   <main>
@@ -25,6 +38,12 @@ import Footproject from './components/Footproject.vue';
 </template>
 
 <style scoped>
+
+.welcome-item {
+    margin-top: 2rem;
+    display: flex;
+}
+
 header {
   line-height: 1.5;
 }
@@ -52,3 +71,13 @@ header {
   }
 }
 </style>
+<script>
+import ImageFrame from "@/components/ImageFrame.vue";
+
+export default {
+    name: "MyComponent",
+    components: {
+        ImageFrame,
+    },
+};
+</script>
